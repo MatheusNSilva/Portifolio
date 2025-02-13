@@ -1,30 +1,48 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <Header />
+    <div class="main-content">
+      <Sidebar @navigate="setCurrentSection" />
+      <div class="content">
+        <component :is="currentSection" />
+      </div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script>
+import Header from './components/Header.vue'
+import Sidebar from './components/Sidebar.vue'
+import Bio from './views/Bio.vue'
+import Contact from './views/Contact.vue'
+import Experience from './views/Experience.vue'
+import Projects from './views/Projects.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Sidebar,
+  },
+  data() {
+    return {
+      currentSection: Bio, // Carrega a bio por padrão
+    }
+  },
+  methods: {
+    setCurrentSection(section) {
+      this.currentSection = section;
+    }
+  }
+}
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.main-content {
+  display: flex;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.content {
+  flex: 1;
+  padding: 20px;
 }
 </style>
