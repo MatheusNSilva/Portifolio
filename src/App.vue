@@ -4,19 +4,16 @@
     <div class="main-content">
       <Sidebar @navigate="setCurrentSection" />
       <div class="content">
-        <component :is="currentSection" />
+        <component :is="currentComponent" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Sidebar from './components/Sidebar.vue'
-import Bio from './views/Bio.vue'
-import Contact from './views/Contact.vue'
-import Experience from './views/Experience.vue'
-import Projects from './views/Projects.vue'
+import { defineAsyncComponent } from 'vue';
+import Header from './components/Header.vue';
+import Sidebar from './components/Sidebar.vue';
 
 export default {
   name: 'App',
@@ -26,7 +23,20 @@ export default {
   },
   data() {
     return {
-      currentSection: Bio, // Carrega a bio por padrão
+      currentSection: 'Bio', // Nome do componente como string
+    };
+  },
+  computed: {
+    currentComponent() {
+      // Mapeamento dinâmico dos componentes
+      const components = {
+        Bio: defineAsyncComponent(() => import('./views/Bio.vue')),
+        Contact: defineAsyncComponent(() => import('./views/Contact.vue')),
+        Experience: defineAsyncComponent(() => import('./views/Experience.vue')),
+        Projects: defineAsyncComponent(() => import('./views/Projects.vue')),
+        Skills: defineAsyncComponent(() => import('./views/Skills.vue')),
+      };
+      return components[this.currentSection] || components.Bio;
     }
   },
   methods: {
@@ -34,7 +44,7 @@ export default {
       this.currentSection = section;
     }
   }
-}
+};
 </script>
 
 <style scoped>

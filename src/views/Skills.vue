@@ -16,10 +16,15 @@
     data() {
       return {
         skills: [
-          { name: "Vue.js", icon: "🟩" },
+          { name: "Redux", icon: "🟩" },
           { name: "JavaScript", icon: "🟨" },
+          { name: "TypeScript", icon: "🟨" },
+          { name: "React", icon: "🟨" },
+          { name: "Material-ui", icon: "🟨" },
+          { name: "SQL", icon: "🟨" },
           { name: "Node.js", icon: "🟩" },
-          { name: "HTML & CSS", icon: "🔵" },
+          { name: "HTML5", icon: "🔵" },
+          { name: "CSS3", icon: "🔵" },
           { name: "MongoDB", icon: "🍃" },
           { name: "Docker", icon: "🐳" }
         ]
@@ -50,7 +55,7 @@
   .skill-card {
     display: flex;
     align-items: center;
-    background: #f8f9fa;
+    background: #1a2026;
     padding: 10px;
     border-radius: 6px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);

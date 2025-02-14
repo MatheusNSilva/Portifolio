@@ -1,38 +1,37 @@
 <template>
-    <aside>
-      <button @click="navigateTo(Bio)">Bio</button>
-      <button @click="navigateTo(Experience)">Experiência</button>
-      <button @click="navigateTo(Projects)">Projetos</button>
-      <button @click="navigateTo(Contact)">Contato</button>
-    </aside>
+  <nav class="sidebar">
+    <ul>
+      <li @click="$emit('navigate', 'Bio')">Bio</li>
+      <li @click="$emit('navigate', 'Experience')">Experiência</li>
+      <li @click="$emit('navigate', 'Skills')">Habilidades</li>
+      <li @click="$emit('navigate', 'Projects')">Projetos</li>
+      <li @click="$emit('navigate', 'Contact')">Contato</li>
+    </ul>
+  </nav>
 </template>
-  
-<script>
-  import Bio from '../views/Bio.vue'
-  import Experience from '../views/Experience.vue'
-  import Projects from '../views/Projects.vue'
-  import Contact from '../views/Contact.vue'
-  
-  export default {
-    name: 'Sidebar',
-    methods: {
-      navigateTo(section) {
-        this.$emit('navigate', section);
-      }
-    }
-  }
-</script>
-  
+
 <style scoped>
-  aside {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 20px;
-  }
-  button {
-    display: block;
-    margin: 10px 0;
-    width: 100%;
-  }
+.sidebar {
+  border-radius: 1.5rem;
+  width: 200px;
+  padding: 20px;
+  background: #433939;
+  height: 20rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 5px;
+  background: rgb(13, 11, 11);
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+li:hover {
+  background: #ddd;
+}
 </style>
-  
