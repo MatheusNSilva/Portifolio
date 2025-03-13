@@ -1,0 +1,34 @@
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+.header {
+    padding-top: 20px;
+    height: 50px;
+    text-align: center;  
+}
+.header, .sidebar {
+    background: var(--secondary-color);
+    color: var(--lighten-color);  
+}
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid var(--lighten-color);
+}
+.sidebar img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+
